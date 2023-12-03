@@ -1,29 +1,47 @@
 import React, { useState } from 'react';
+import { nanoid } from "nanoid";
 import './App.css';
 import Header from './components/header';
 import TaskCard from './components/task-card';
 
+function App() {
+  const data: any[] = []
+  const [tasks, setTasks] = useState(data);
+  const [newTaskName, setNewTaskName] = useState('');
 
-function App(props: { tasks: { id: string; name: string; completed: boolean }[] }) {
-  const taskList = props.tasks.map((task) => (
-    <TaskCard key={task.id} name={task.name} completed={task.completed} />
+  const taskList = tasks.map((task) => (
+    <TaskCard key={task.id} id={task.id} name={task.name} completed={task.completed} deleteTask={deleteTask} />
   ));
-  
+
+  function addTask() {
+    if (newTaskName!==""){
+      const newTask = { id: `todo-${nanoid()}`, name:newTaskName, completed: false };
+      setTasks([...tasks, newTask]);
+      setNewTaskName(''); // Reset input after adding task
+    } 
+  }
+
+  function deleteTask(id:string) {
+    const remainingTasks = tasks.filter((task) => id !== task.id);
+    setTasks(remainingTasks);
+  }
 
   return (
     <body>
       <Header />
-    
+
       <section className='add-task'>
-        <input type="text" placeholder='Titre de la tâche'/>
-        <button>+</button>
+        <input
+          type="text"
+          placeholder='Titre de la tâche'
+          value={newTaskName}
+          onChange={(e) => setNewTaskName(e.target.value)}
+        />
+        <button onClick={() => addTask()}>+</button>
       </section>
 
-      <section className="task-container">
-        {taskList}
-      </section>
+      <section className="task-container">{taskList}</section>
     </body>
-   
   );
 }
 
