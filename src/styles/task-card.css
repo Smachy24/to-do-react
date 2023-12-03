@@ -1,0 +1,7 @@
+.task-card{
+  background-color: white;
+  display: flex;
+  width: 70%;
+  height: 100px;
+  align-items: center;
+}
