@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Header from './components/header';
 import TaskCard from './components/task-card';
 
 
-function App() {
+function App(props: { tasks: { id: string; name: string; completed: boolean }[] }) {
+  const taskList = props.tasks.map((task) => (
+    <TaskCard key={task.id} name={task.name} completed={task.completed} />
+  ));
+  
+
   return (
     <body>
       <Header />
@@ -15,9 +20,7 @@ function App() {
       </section>
 
       <section className="task-container">
-        <TaskCard name="AAAAA" completed={true}/>
-        <TaskCard name="BBBBB" completed={false}/>
-        <TaskCard name="CCCCC" completed={true}/>
+        {taskList}
       </section>
     </body>
    

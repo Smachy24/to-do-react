@@ -12,14 +12,47 @@ body{
 
 .add-task {
   display: flex;
-  background-color: white;
+  background-color: none;
   align-items: center;
-  width: 70%;
+  width: 50%;
+  max-width: 70%;
   margin: auto;
-  justify-content: space-between;
+  margin-top: 40px;
+  justify-content: center;
   column-gap: 10%;
 }
 
 .add-task input{
   width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  color: #1d1f24;
+  background-color: white;
+}
+
+.add-task input::placeholder{
+  color: #1d1f24;
+}
+
+.add-task input:active{
+  border-color: #1d1f24;
+}
+
+.add-task button{
+  border-radius: 64px;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 0 10px;
+  color: white;
+  background-color: #1d1f24;
+  transition-duration: 0.2s;
+}
+
+.add-task button:hover {
+  color: #1d1f24;
+  background-color: white;
 }

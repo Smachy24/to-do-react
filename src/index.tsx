@@ -7,9 +7,16 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const data = [
+  {id: "todo-0", name: 'AAAA', completed: true},
+  {id: "todo-1", name: 'BBBBBBBB', completed: false},
+  {id: "todo-0", name: 'CCCCCCCCC', completed: true},
+]
+
 root.render(
   <React.StrictMode>
-    <App />
+    <App tasks={data}/>
   </React.StrictMode>
 );
 
