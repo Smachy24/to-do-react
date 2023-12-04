@@ -55,7 +55,7 @@ function App() {
 
       <section className="task-container">
         {incompletedTasks}
-        <p>--------------------</p>
+        <hr className='bar' />
         {completedTasks}
       </section>
     </body>

@@ -14,14 +14,15 @@
   column-gap: 10px;
 }
 
+.task-info-completed{
+  text-decoration: line-through;
+}
+
 .task-checkbox{
   min-width: 24px;
   height: 24px;
 }
 
-.remove-task{
-  
-}
 .remove-task-icon{
   cursor: pointer;
   height: 24px;
