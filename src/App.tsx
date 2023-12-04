@@ -5,26 +5,39 @@ import Header from './components/header';
 import TaskCard from './components/task-card';
 
 function App() {
-  const data: any[] = []
+  const data: any[] = [];
   const [tasks, setTasks] = useState(data);
   const [newTaskName, setNewTaskName] = useState('');
 
-  const taskList = tasks.map((task) => (
-    <TaskCard key={task.id} id={task.id} name={task.name} completed={task.completed} deleteTask={deleteTask} />
-  ));
-
   function addTask() {
-    if (newTaskName!==""){
-      const newTask = { id: `todo-${nanoid()}`, name:newTaskName, completed: false };
+    if (newTaskName !== "") {
+      const newTask = { id: `todo-${nanoid()}`, name: newTaskName, completed: false };
       setTasks([...tasks, newTask]);
-      setNewTaskName(''); // Reset input after adding task
-    } 
+      setNewTaskName('');
+    }
   }
 
-  function deleteTask(id:string) {
+  function deleteTask(id: string) {
     const remainingTasks = tasks.filter((task) => id !== task.id);
     setTasks(remainingTasks);
   }
+
+  function toggleComplete(id: string) {
+    const updatedTasks = tasks.map(task => {
+      if (task.id === id) {
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  }
+
+  const allTasks = tasks.map(task => (
+    <TaskCard key={task.id} id={task.id} name={task.name} completed={task.completed} deleteTask={deleteTask} toggleComplete={toggleComplete} />
+  ));
+
+  const incompletedTasks = allTasks.filter(task => !task.props.completed);
+  const completedTasks = allTasks.filter(task => task.props.completed);
 
   return (
     <body>
@@ -40,7 +53,11 @@ function App() {
         <button onClick={() => addTask()}>+</button>
       </section>
 
-      <section className="task-container">{taskList}</section>
+      <section className="task-container">
+        {incompletedTasks}
+        <p>--------------------</p>
+        {completedTasks}
+      </section>
     </body>
   );
 }

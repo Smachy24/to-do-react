@@ -14,12 +14,10 @@ body{
   display: flex;
   background-color: none;
   align-items: center;
-  width: 50%;
-  max-width: 70%;
+  width: 40%;
   margin: auto;
   margin-top: 40px;
-  justify-content: center;
-  column-gap: 10%;
+  column-gap: 16px;
 }
 
 .add-task input{

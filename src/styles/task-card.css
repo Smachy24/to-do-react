@@ -1,7 +1,32 @@
+
 .task-card{
   background-color: white;
   display: flex;
   width: 70%;
-  height: 100px;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.task-info{
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.task-checkbox{
+  min-width: 24px;
+  height: 24px;
+}
+
+.remove-task{
+  
+}
+.remove-task-icon{
+  cursor: pointer;
+  height: 24px;
+}
+
+.task-title{
+  color: #1d1f24;
 }
